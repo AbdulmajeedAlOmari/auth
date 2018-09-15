@@ -7,7 +7,6 @@ const CardSection = (props) => {
 			{props.children}
 		</View>
 	);
-	
 };
 
 const styles = {
@@ -20,5 +19,6 @@ const styles = {
 		borderColor: '#ddd',
 		position: 'relative'
 	}
-}
+};
+
 export { CardSection };
