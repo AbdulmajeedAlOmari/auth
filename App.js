@@ -1,23 +1,34 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { 	FB_API_KEY,
+			FB_AUTH_DOMAIN,
+			FB_DB_URL,
+			FB_PROJECT_ID,
+			FB_STORAGE_BUCKET,
+			FB_MESSAGIN_SENDER_ID } from 'react-native-dotenv';
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
+import firebase from 'firebase';
+import { Header } from './src/components/common';
+import LoginForm from './src/components/LoginForm';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
-  }
+export default class App extends Component {
+
+	componentWillMount() {
+		// Initialize Firebase
+		const config = {
+			apiKey: FB_API_KEY,
+			authDomain: FB_AUTH_DOMAIN,
+			databaseURL: FB_DB_URL,
+			projectId: FB_PROJECT_ID,
+			storageBucket: FB_STORAGE_BUCKET,
+			messagingSenderId: FB_MESSAGIN_SENDER_ID
+		};
+
+		firebase.initializeApp(config);
+	}
+
+	render() {
+		return (
+			<LoginForm />
+		);
+	}
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
