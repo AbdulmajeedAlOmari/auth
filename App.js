@@ -5,7 +5,7 @@ import { 	FB_API_KEY,
 			FB_STORAGE_BUCKET,
 			FB_MESSAGIN_SENDER_ID } from 'react-native-dotenv';
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import firebase from 'firebase';
 import { Header } from './src/components/common';
 import LoginForm from './src/components/LoginForm';
@@ -28,7 +28,10 @@ export default class App extends Component {
 
 	render() {
 		return (
-			<LoginForm />
+			<View>
+				<Header headerText="Authentication" />
+				<LoginForm />
+			</View>
 		);
 	}
 }
