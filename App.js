@@ -7,8 +7,9 @@ import { 	FB_API_KEY,
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import firebase from 'firebase';
-import { Header, Button, Spinner } from './src/components/common';
+import { Header, Spinner } from './src/components/common';
 import LoginForm from './src/components/LoginForm';
+import LogoutForm from './src/components/LogoutForm';
 
 export default class App extends Component {
 	state = { loggedIn: null };
@@ -38,7 +39,7 @@ export default class App extends Component {
 	renderContent() {
 		switch (this.state.loggedIn) {
 			case true:
-				return <Button style={styles.buttonStyle}>Log Out</Button>;
+				return 	<LogoutForm onButtonPress={() => firebase.auth().signOut()} />;
 			case false:
 				return <LoginForm />;
 			default:
@@ -48,7 +49,7 @@ export default class App extends Component {
 
 	render() {
 		return (
-			<View>
+			<View style={styles.containerStyle}>
 				<Header headerText="Authentication" />
 				{this.renderContent()}
 			</View>
@@ -57,8 +58,10 @@ export default class App extends Component {
 }
 
 const styles = {
-	buttonStyle: {
-		marginTop: 100
+	containerStyle: {
+		flex: 1,
+		height: '100%',
+		width: '100%'
 	},
 	spinnerContainerStyle: {
         flex: 1,
