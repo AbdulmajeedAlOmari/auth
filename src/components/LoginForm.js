@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 import firebase from 'firebase';
-import { Button, Card, CardSection, Input, Spinner } from './common';
+import { Button, Card, CardSection, Input, Spinner, Alert } from './common';
 
 export default class login extends Component {
 	state = { email: '', password: '', error: '', loading: false };
@@ -51,6 +51,16 @@ export default class login extends Component {
 		);
 	}
 
+	renderError() {
+		if (this.state.error) {
+			return	(
+						<Alert color='red'>
+							{this.state.error}
+						</Alert>
+					);
+		}
+	}
+
 	render() {
 		return (
 			<Card>
@@ -73,9 +83,7 @@ export default class login extends Component {
 					/>
 				</CardSection>
 
-				<Text style={styles.errorTextStyle}>
-					{this.state.error}
-				</Text>
+				{this.renderError()}
 
 				<CardSection>
 					{this.renderButton()}
@@ -84,11 +92,3 @@ export default class login extends Component {
 		);
 	}
 }
-
-const styles = {
-	errorTextStyle: {
-		fontSize: 20,
-		alignSelf: 'center',
-		color: 'red'
-	}
-};
