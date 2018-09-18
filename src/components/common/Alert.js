@@ -1,13 +1,8 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const Alert = ({ color, children }) => {
+const Alert = ({ children }) => {
 	const { containerStyle, textStyle } = styles;
-
-	if (color) {
-		containerStyle.borderColor = color;
-		textStyle.color = color;
-	}
 
 	return (
 		<View style={containerStyle}>
@@ -24,12 +19,12 @@ const styles = {
 		backgroundColor: '#fff',
 		borderWidth: 2,
 		borderRadius: 5,
-		borderColor: '#000',
+		borderColor: 'red',
 		margin: 5,
 	},
 	textStyle: {
 		fontSize: 18,
-		color: '#000',
+		color: 'red',
 		paddingTop: 10,
 		paddingBottom: 10,
 		paddingRight: 5,

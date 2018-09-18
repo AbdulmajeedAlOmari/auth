@@ -54,7 +54,7 @@ export default class login extends Component {
 	renderError() {
 		if (this.state.error) {
 			return	(
-						<Alert color='red'>
+						<Alert>
 							{this.state.error}
 						</Alert>
 					);
