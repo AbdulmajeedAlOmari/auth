@@ -1,4 +1,5 @@
-import { 	FB_API_KEY,
+import { 	
+			FB_API_KEY,
 			FB_AUTH_DOMAIN,
 			FB_DB_URL,
 			FB_PROJECT_ID,
@@ -39,7 +40,7 @@ export default class App extends Component {
 	renderContent() {
 		switch (this.state.loggedIn) {
 			case true:
-				return 	<LogoutForm onButtonPress={() => firebase.auth().signOut()} />;
+				return <LogoutForm onButtonPress={() => firebase.auth().signOut()} />;
 			case false:
 				return <LoginForm />;
 			default:
